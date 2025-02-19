@@ -1,11 +1,14 @@
-import { fetchTVSeries } from "./models/tvSeriesModel";
+import { TVSeriesService } from "./services/tvSeriesService";
+
+const tvSeriesService: TVSeriesService = new TVSeriesService();
 
 const server = Bun.serve({
   async fetch(req) {
     const path = new URL(req.url).pathname;
 
     if (path === "/") {
-      const tvSeriesData = await fetchTVSeries("2");
+      const tvSeriesData = await tvSeriesService.searchTVSeriesByTitle("merlin");
+
       return new Response(JSON.stringify(tvSeriesData), {
         status: 200,
         headers: { "Content-Type": "application/json" },
