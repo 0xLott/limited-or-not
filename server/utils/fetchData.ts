@@ -1,5 +1,4 @@
-import { TMDB_API } from "../config";
-import { APIError } from "./errors";
+import { APIError, TVShowNotFoundError } from "./errors";
 
 interface FetchOptions {
   method?: string;
@@ -27,10 +26,20 @@ export async function fetchData(url: string, options: FetchOptions = {}) {
     ...options,
   });
 
-  if (!response.ok) {
-    throw new APIError(`Failed to fetch TV series: HTTP ${response.status} - ${response.statusText}.`, response.status);
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else if (response.status === 404) {
+    throw new TVShowNotFoundError(
+      `TV Show not found. (HTTP ${response.status} - ${response.statusText}).`,
+      response.status
+    );
+  } else if (response.status >= 500 && response.status < 600) {
+    throw new APIError(
+      `The TMDB server encountered an unexpected error. Please try again later (HTTP ${response.status} - ${response.statusText}).`,
+      response.status
+    );
+  } else {
+    throw new Error(`Unexpected error (HTTP ${response.status} - ${response.statusText}).`);
   }
-
-  const data = await response.json();
-  return data;
 }
