@@ -8,6 +8,7 @@ const server = Bun.serve({
 
     if (path === "/") {
       const tvSeriesData = await tvSeriesService.searchTVSeriesByTitle("merlin");
+
       return new Response(JSON.stringify(tvSeriesData), {
         status: 200,
         headers: { "Content-Type": "application/json" },
