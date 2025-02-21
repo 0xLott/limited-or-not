@@ -5,9 +5,11 @@ export class APIError extends Error {
   }
 }
 
-export class TVShowNotFoundError extends APIError {
+export class ObjectNotFoundError extends Error {
+  statusCode;
   constructor(message, statusCode) {
-    super(message, 404);
+    super(message);
+    this.statusCode = statusCode;
   }
 }
 
