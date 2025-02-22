@@ -22,6 +22,9 @@ export class TVSeries {
     this.title = title;
     this.type = type;
     this.status = status;
-    this.poster_path = `https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${poster_path}`;
+    this.poster_path =
+      poster_path === null
+        ? "https://picsum.photos/200/300"
+        : `https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${poster_path}`;
   }
 }

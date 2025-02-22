@@ -107,3 +107,10 @@ describe("Searching for tv series unit tests", () => {
     expect(searchResults[0].title).toBe("Merlin");
   });
 });
+
+describe("Verifying default image in case of no poster", () => {
+  test("Fetch TV series with null `poster_path`", async () => {
+    const seriesWithNullPoster: TVSeries = await tvSeriesService.getTVSeriesById(221284);
+    expect(seriesWithNullPoster.poster_path).toBe("https://picsum.photos/200/300");
+  });
+});
