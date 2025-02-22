@@ -5,16 +5,14 @@ export class APIError extends Error {
   }
 }
 
-export class ObjectNotFoundError extends Error {
-  statusCode;
-  constructor(message, statusCode) {
-    super(message);
-    this.statusCode = statusCode;
+export class ObjectNotFoundError extends APIError {
+  constructor(message) {
+    super(message, 404);
   }
 }
 
-export class InvalidParameterError extends Error {
+export class InvalidParameterError extends APIError {
   constructor(message) {
-    super(message);
+    super(message, 400);
   }
 }

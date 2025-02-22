@@ -34,11 +34,11 @@ export async function fetchData(url: string, options: FetchOptions = {}): Promis
 
   if (response.ok) {
     if (!data || Object.keys(data).length === 0) {
-      throw new ObjectNotFoundError(`TV Show not found. (HTTP 404)`, 404);
+      throw new ObjectNotFoundError(`TV Show not found. (HTTP 404)`);
     }
     return data;
   } else if (response.status === 404 || data.status_code === 34) {
-    throw new ObjectNotFoundError(`TV Show not found. (HTTP 404)`, 404);
+    throw new ObjectNotFoundError(`TV Show not found. (HTTP 404)`);
   } else if (response.status >= 500 && response.status < 600) {
     throw new APIError(
       `The TMDB server encountered an unexpected error. Please try again later (HTTP ${response.status} - ${response.statusText}).`,
