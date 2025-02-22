@@ -6,8 +6,8 @@ export class APIError extends Error {
 }
 
 export class ObjectNotFoundError extends APIError {
-  constructor(message) {
-    super(message, 404);
+  constructor() {
+    super("TV Show not found. (HTTP 404)", 404);
   }
 }
 

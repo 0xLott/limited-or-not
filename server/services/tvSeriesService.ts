@@ -3,12 +3,11 @@ import { fetchData } from "../utils/fetchData";
 import { TMDB_API } from "../config";
 import { APIError, ObjectNotFoundError, InvalidParameterError } from "../utils/errors";
 
-// TODO: Create a simple backlog of iteration 1 for MVP considering the to-dos below and other product functionalities
 // TODO: Alternative for when there's no poster image
 export class TVSeriesService {
   public async getTVSeriesById(seriesId: number): Promise<TVSeries> {
     if (typeof seriesId !== "number" || isNaN(seriesId) || seriesId < -2147483648 || seriesId > 2147483647) {
-      throw new InvalidParameterError("seriesId must be a valid int32");
+      throw new InvalidParameterError("`seriesId` must be a valid int32");
     }
 
     const url = `${TMDB_API.BASE_URL}/tv/${seriesId}?language=en-US`;
@@ -32,7 +31,7 @@ export class TVSeriesService {
 
   public async searchTVSeriesByTitle(seriesTitle: string): Promise<TVSeries[]> {
     if (typeof seriesTitle !== "string" || seriesTitle.trim() === "") {
-      throw new InvalidParameterError("seriesTitle must be a non-empty string");
+      throw new InvalidParameterError("`seriesTitle` must be a non-empty string");
     }
 
     const url = `${TMDB_API.BASE_URL}/search/tv?query=${seriesTitle}&include_adult=true&language=en-US&page=1`;

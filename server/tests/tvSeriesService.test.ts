@@ -26,7 +26,7 @@ describe("Fetching tv series unit tests", () => {
       await tvSeriesService.getTVSeriesById(-2147483649);
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
-      expect(error.message).toBe("seriesId must be a valid int32");
+      expect(error.message).toBe("`seriesId` must be a valid int32");
     }
   });
 
@@ -39,7 +39,7 @@ describe("Fetching tv series unit tests", () => {
       await tvSeriesService.getTVSeriesById("invalidId" as any);
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
-      expect(error.message).toBe("seriesId must be a valid int32");
+      expect(error.message).toBe("`seriesId` must be a valid int32");
     }
   });
 
@@ -78,7 +78,7 @@ describe("Searching for tv series unit tests", () => {
       await tvSeriesService.searchTVSeriesByTitle(999 as any);
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
-      expect(error.message).toBe("seriesTitle must be a non-empty string");
+      expect(error.message).toBe("`seriesTitle` must be a non-empty string");
     }
   });
 
@@ -96,7 +96,7 @@ describe("Searching for tv series unit tests", () => {
       await tvSeriesService.searchTVSeriesByTitle("");
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
-      expect(error.message).toBe("seriesTitle must be a non-empty string");
+      expect(error.message).toBe("`seriesTitle` must be a non-empty string");
     }
   });
 

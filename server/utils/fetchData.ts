@@ -7,17 +7,15 @@ interface FetchOptions {
 }
 
 /**
- * Generic data fetcher. Retrieves data from the specified URL with the given options.
+ * Generic data fetcher. Retrieves data from the specified URL with the given HTTP options.
  *
- * @param url The url to fetch data from
- * @param options Options for the HTTP request, if necessary
- * @returns A promise that resolves to the fetched data in JSON, or an error object if the request fails.
+ * @param {string} url The URL to fetch data from.
+ * @param {FetchOptions} [options={}] Options for the HTTP request, such as method and headers.
+ * @returns {Promise<any>} A promise that resolves to the fetched data in JSON format, or an error object if the request fails.
  *
- * @throws Will throw an error if:
- * a. The response status is not ok
- * b. The response status is 404
- * c. The response status is between 500 and 599
- * d. The response status is not 404, but the results array is empty (TMDB API returns an empty array when no results are found)
+ * @throws {ObjectNotFoundError} Will throw an error if the response status is 404 or if the results array is empty.
+ * @throws {APIError} Will throw an error if the response status is between 500 and 599.
+ * @throws {Error} Will throw a generic error if the response status is not ok and does not match the above conditions.
  */
 export async function fetchData(url: string, options: FetchOptions = {}): Promise<any> {
   const response = await fetch(url, {
@@ -32,19 +30,22 @@ export async function fetchData(url: string, options: FetchOptions = {}): Promis
 
   const data = await response.json();
 
-  if (response.ok) {
-    if (!data || Object.keys(data).length === 0) {
-      throw new ObjectNotFoundError(`TV Show not found. (HTTP 404)`);
+  if (!response.ok) {
+    if (response.status === 404 || data?.status_code === 34) {
+      throw new ObjectNotFoundError();
     }
-    return data;
-  } else if (response.status === 404 || data.status_code === 34) {
-    throw new ObjectNotFoundError(`TV Show not found. (HTTP 404)`);
-  } else if (response.status >= 500 && response.status < 600) {
-    throw new APIError(
-      `The TMDB server encountered an unexpected error. Please try again later (HTTP ${response.status} - ${response.statusText}).`,
-      response.status
-    );
-  } else {
-    throw new Error(`Unexpected error (HTTP ${response.status} - ${response.statusText}).`);
+    if (response.status >= 500 && response.status < 600) {
+      throw new APIError(
+        `The TMDB server encountered an unexpected error. Please try again later (HTTP ${response.status}}).`,
+        response.status
+      );
+    }
+    throw new Error(`Unexpected error (HTTP ${response.status}).`);
   }
+
+  if (!data || Object.keys(data).length === 0) {
+    throw new ObjectNotFoundError();
+  }
+
+  return data;
 }
