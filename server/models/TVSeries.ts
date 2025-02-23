@@ -1,6 +1,3 @@
-import { fetchData } from "../utils/fetchData";
-import { TMDB_API } from "../config";
-
 export enum Status {
   ReturningSeries = "Returning Series",
   Planned = "Planned",
