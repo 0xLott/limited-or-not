@@ -22,7 +22,7 @@ export async function fetchData(url: string, options: FetchOptions = {}): Promis
     method: options.method || "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+      Authorization: `Bearer ${Bun.env.TMDB_API_KEY}`,
       ...options.headers,
     },
     ...options,
