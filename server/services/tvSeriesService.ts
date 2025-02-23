@@ -1,4 +1,4 @@
-import { TVSeries, Status } from "../models/TVSeries";
+import { TVSeries, Status, Type } from "../models/TVSeries";
 import { fetchData } from "../utils/fetchData";
 import { APIError, ObjectNotFoundError, InvalidParameterError } from "../utils/errors";
 import { TMDB_API } from "../config";
@@ -53,6 +53,6 @@ export class TVSeriesService {
   }
 
   public static newTvSeriesEntity(data: any): TVSeries {
-    return new TVSeries(data.id, data.name, data.type, data.status as Status, data.poster_path);
+    return new TVSeries(data.id, data.name, data.type as Type, data.status as Status, data.poster_path);
   }
 }

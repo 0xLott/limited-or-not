@@ -10,14 +10,23 @@ export enum Status {
   Pilot = "Pilot",
 }
 
+export enum Type {
+  Scripted = "Scripted",
+  Talk = "Talk Show",
+  Reality = "Reality",
+  News = "News",
+  Documentary = "Documentary",
+  Miniseries = "Miniseries",
+}
+
 export class TVSeries {
   public id!: number;
   public title!: string;
-  public type!: string;
+  public type!: Type;
   public status!: Status;
   public poster_path?: string;
 
-  constructor(id: number, title: string, type: string, status: Status, poster_path?: string) {
+  constructor(id: number, title: string, type: Type, status: Status, poster_path?: string) {
     this.id = id;
     this.title = title;
     this.type = type;
