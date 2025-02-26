@@ -5,14 +5,14 @@ export class APIError extends Error {
   }
 }
 
-export class TVShowNotFoundError extends APIError {
-  constructor(message, statusCode) {
-    super(message, 404);
+export class ObjectNotFoundError extends APIError {
+  constructor() {
+    super("TV Show not found. (HTTP 404)", 404);
   }
 }
 
-export class InvalidParameterError extends Error {
+export class InvalidParameterError extends APIError {
   constructor(message) {
-    super(message);
+    super(message, 400);
   }
 }
