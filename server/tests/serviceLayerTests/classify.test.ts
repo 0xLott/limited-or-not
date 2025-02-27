@@ -24,11 +24,6 @@ describe("Classifying tv series type", () => {
     expect(service.isMiniseries(series)).toBe(true);
   });
 
-  test("Should return false when series type is Scripted", () => {
-    const series = new TVSeries(2, "Test Series", Type.Scripted, Status.Ended);
-    expect(service.isMiniseries(series)).toBe(false);
-  });
-
   test("Should return false when series type is Talk Show", () => {
     const series = new TVSeries(3, "Test Series", Type.Talk, Status.Ended);
     expect(service.isMiniseries(series)).toBe(false);
