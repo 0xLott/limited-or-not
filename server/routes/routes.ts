@@ -4,7 +4,7 @@ import { getTVSeriesById, isMiniseries, searchTVSeriesByTitle } from "../control
 export const routes: Record<string, (req: BunRequest) => Response | Promise<Response>> = {
   "/": () => Response.json({ message: "Limited or Not?" }),
   "/api/status": () => new Response("OK"),
-  "/series/:id": (req) => getTVSeriesById(req),
-  "/series/miniseries/:id": (req) => isMiniseries(req),
-  "/search/:title": (req) => searchTVSeriesByTitle(req),
+  "/api/series/:id": (req) => getTVSeriesById(req),
+  "/api/series/:id/is-miniseries": (req) => isMiniseries(req),
+  "/api/search/:title": (req) => searchTVSeriesByTitle(req),
 };

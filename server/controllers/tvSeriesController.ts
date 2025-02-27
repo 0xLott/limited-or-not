@@ -32,7 +32,8 @@ export const isMiniseries = async (req: BunRequest) => {
   try {
     const seriesId = parseInt(req.params.id);
     const series = await service.getTVSeriesById(seriesId);
-    return new Response(JSON.stringify(service.isMiniseries(series)), {
+    const isMiniseries = service.isMiniseries(series);
+    return new Response(JSON.stringify({ isMiniseries }), {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
