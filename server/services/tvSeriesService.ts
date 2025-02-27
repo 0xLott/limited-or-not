@@ -52,6 +52,10 @@ export class TVSeriesService {
     }
   }
 
+  public isMiniseries(series: TVSeries): Boolean {
+    return series.type === Type.Miniseries;
+  }
+
   public static newTvSeriesEntity(data: any): TVSeries {
     return new TVSeries(data.id, data.name, data.type as Type, data.status as Status, data.poster_path);
   }
