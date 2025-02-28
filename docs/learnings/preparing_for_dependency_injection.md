@@ -23,7 +23,7 @@ export interface IFetchClient {
 }
 ```
 
-### **2️. Modify `fetchData` to implement the interface**
+### **2. Modify `fetchData` to implement the interface**
 
 ```typescript
 // utils/fetchClient.ts
@@ -42,7 +42,7 @@ export class FetchClient implements IFetchClient {
 
 Now `FetchClient` follows the `IFetchClient` interface, making it interchangeable with other implementations.
 
-### **3️. Modify `TVSeriesService` to accept an `IFetchClient`**
+### **3. Modify `TVSeriesService` to accept an `IFetchClient`**
 
 ```typescript
 // services/tvSeriesService.ts
@@ -79,7 +79,7 @@ export class TVSeriesService {
 
 Now `TVSeriesService` does NOT depend on a specific fetch function. You can inject any `IFetchClient` implementation.
 
-### **4️. Inject dependency in `index.ts`**
+### **4. Inject dependency in `index.ts`**
 
 ```typescript
 import { TVSeriesService } from "./services/tvSeriesService";
@@ -139,7 +139,7 @@ With dependency injection, we inject a mock `IFetchClient` for testing. This avo
 
 ---
 
-## **TL;DR: Why Instance-Based DI is better**
+## **TL;DR: why instance-based DI is better**
 
 | ❌ **Without DI (Static methods)**                   | ✅ **With DI (Instance-Based)**                   |
 | ---------------------------------------------------- | ------------------------------------------------- |
