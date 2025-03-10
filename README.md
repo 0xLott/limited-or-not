@@ -18,6 +18,14 @@ To run unit tests using Bun, use the following command from any directory within
 bun test
 ```
 
+### OpenAPI with tsoa
+
+From the `server` directory, run:
+
+- `npx tsoa spec`, to generate specs
+
+- `npx tsoa routes`, to generate routes
+
 ### Developer tools
 
 - **The Movie Database (TMDB)**: [The Movie Database](https://www.themoviedb.org/)
