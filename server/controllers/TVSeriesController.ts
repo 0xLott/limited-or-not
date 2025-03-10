@@ -1,11 +1,14 @@
-import type { BunRequest } from "bun";
 import { TVSeriesService } from "../services/TVSeriesService";
 import { APIError, InvalidParameterError, ObjectNotFoundError } from "../utils/errors";
-import { Body, Controller, Get, Path, Post, Query, Route, SuccessResponse } from "tsoa";
+import { Get, Path, Route, Response as ApiResponse } from "tsoa";
 const service = new TVSeriesService();
 
+@Route("series")
 export class TVSeriesController {
-  getTVSeriesById = async (seriesId: number) => {
+  @Get("{seriesId}")
+  @ApiResponse<Error>(400, "Bad Request")
+  @ApiResponse<Error>(404, "Not Found")
+  public async getTVSeriesById(@Path() seriesId: number): Promise<Response> {
     try {
       const series = await service.getTVSeriesById(seriesId);
       return new Response(JSON.stringify(series), {
@@ -14,9 +17,12 @@ export class TVSeriesController {
     } catch (error) {
       return this.handleErrorResponse(error);
     }
-  };
+  }
 
-  searchTVSeriesByTitle = async (title: string) => {
+  @Get("search/{title}")
+  @ApiResponse<Error>(400, "Bad Request")
+  @ApiResponse<Error>(404, "Not Found")
+  public async searchTVSeriesByTitle(@Path() title: string): Promise<Response> {
     try {
       const series = await service.searchTVSeriesByTitle(title);
       return new Response(JSON.stringify(series), {
@@ -25,9 +31,12 @@ export class TVSeriesController {
     } catch (error) {
       return this.handleErrorResponse(error);
     }
-  };
+  }
 
-  isMiniseries = async (seriesId: number) => {
+  @Get("is-miniseries/{seriesId}")
+  @ApiResponse<Error>(400, "Bad Request")
+  @ApiResponse<Error>(404, "Not Found")
+  public async isMiniseries(@Path() seriesId: number): Promise<Response> {
     try {
       const series = await service.getTVSeriesById(seriesId);
       const isMiniseries = service.isMiniseries(series);
@@ -37,23 +46,23 @@ export class TVSeriesController {
     } catch (error) {
       return this.handleErrorResponse(error);
     }
-  };
+  }
 
-  handleErrorResponse = (error: unknown) => {
+  handleErrorResponse = (error: any) => {
     let status;
     let message;
 
     if (error instanceof InvalidParameterError) {
-      status = 400; // Bad Request
+      status = 400;
       message = error.message;
     } else if (error instanceof ObjectNotFoundError) {
-      status = 404; // Not Found
+      status = 404;
       message = error.message;
     } else if (error instanceof APIError) {
-      status = 502; // Bad Gateway
+      status = 502;
       message = error.message;
     } else {
-      status = 500; // Internal Server Error
+      status = 500;
       message = "Internal Server Error";
     }
 
