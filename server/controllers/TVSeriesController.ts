@@ -33,7 +33,7 @@ export class TVSeriesController {
     }
   }
 
-  @Get("is-miniseries/{seriesId}")
+  @Get("{seriesId}/is-miniseries")
   @ApiResponse<Error>(400, "Bad Request")
   @ApiResponse<Error>(404, "Not Found")
   public async isMiniseries(@Path() seriesId: number): Promise<Response> {
