@@ -11,6 +11,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@redocly/cli": "^1.33.0",
     "add": "^2.0.6",
     "tsoa": "^6.6.0"
   }
