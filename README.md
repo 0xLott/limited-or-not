@@ -6,7 +6,7 @@ Check if any TV Show is a miniseries.
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) (v1.2.3 or higher)
+- [Bun](https://bun.sh/) (v1.2.5 or higher)
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - TMDB API Key (register at [The Movie Database](https://www.themoviedb.org/settings/api))
 
@@ -18,13 +18,29 @@ To run unit tests using Bun, use the following command from any directory within
 bun test
 ```
 
-### OpenAPI with tsoa
+### Updating OpenAPI documentation
 
-From the `server` directory, run:
+_With TSOA & Redocly_
 
-- `npx tsoa spec`, to generate specs
+1. **Generate OpenAPI spec:**
 
-- `npx tsoa routes`, to generate routes
+   ```sh
+   npx tsoa spec
+   ```
+
+2. **Preview API docs:**
+
+   ```sh
+   npx redocly preview-docs build/swagger.json
+   ```
+
+3. **Build HTML docs:**
+
+   ```sh
+   npx redocly build-docs build/swagger.json --output ../docs/api-docs.html
+   ```
+
+> **Note:** Run `npm i` first if setting up for the first time.
 
 ### Developer tools
 
