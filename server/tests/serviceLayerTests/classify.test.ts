@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, test } from "bun:test";
-import { TVSeriesService } from "../../services/tvSeriesService";
+import { TVSeriesService } from "../../services/TVSeriesService";
 import { TVSeries, Type, Status } from "../../models/TVSeries";
 
 var service: TVSeriesService;
