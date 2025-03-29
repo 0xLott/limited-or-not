@@ -10,6 +10,16 @@ Check if any TV Show is a miniseries.
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - TMDB API Key (register at [The Movie Database](https://www.themoviedb.org/settings/api))
 
+### Setting up environment variables
+
+Create an `.env` file to the `/server` directory with the following key:
+
+```
+TMDB_API_KEY=<your-api-key>
+```
+
+Replace `<your-api-key>` with your actual TMDB API key and ensure you save the file.
+
 ### Running tests
 
 To run unit tests using Bun, use the following command from any directory within the project:
@@ -18,7 +28,7 @@ To run unit tests using Bun, use the following command from any directory within
 bun test
 ```
 
-### Updating OpenAPI documentation
+### Managing OpenAPI documentation
 
 _With TSOA & Redocly_
 
