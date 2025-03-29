@@ -20,13 +20,15 @@ export class TVSeries {
   public id!: number;
   public title!: string;
   public type!: Type;
+  public isMiniseries!: boolean;
   public status!: Status;
   public poster_path?: string;
-
+  
   constructor(id: number, title: string, type: Type, status: Status, poster_path?: string) {
     this.id = id;
     this.title = title;
     this.type = type;
+    this.isMiniseries = this.type === Type.Miniseries ? true : false;
     this.status = status;
     this.poster_path =
       poster_path === null
