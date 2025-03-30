@@ -2,7 +2,7 @@
 
 Check if any TV Show is a miniseries.
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
@@ -20,6 +20,48 @@ TMDB_API_KEY=<your-api-key>
 
 Replace `<your-api-key>` with your actual TMDB API key and ensure you save the file.
 
+### Dependency management  
+
+This app uses Bun to manage dependencies for both the back end (`/server`) and front end (`/client`). From the root directory, install dependencies with:  
+
+```sh
+# Install dependencies for the back end  
+cd server  
+bun install  
+
+# Install dependencies for the front end  
+cd client  
+bun install  
+```
+
+Run the following to add, remove, or upgrade packages:  
+
+- **Add a package**: `bun add package-name`  
+- **Remove a package**: `bun remove package-name`  
+- **Upgrade all dependencies**: `bun upgrade`  
+
+Bun automatically generates a `bun.lock` file for deterministic installs. Ensure this file is committed to version control for consistensy across different environments.
+
+### Starting development servers  
+
+Start the back end and front end development servers using:  
+
+#### Back End (`/server`)  
+
+```sh
+cd server  
+bun .
+```  
+
+#### Front End (`/client`)  
+
+```sh
+cd client  
+bun run dev --open  
+```  
+
+Ensure both servers are running for full functionality.
+
 ### Running tests
 
 To run unit tests using Bun, use the following command from any directory within the project:
@@ -30,7 +72,7 @@ bun test
 
 ### Managing OpenAPI documentation
 
-_With TSOA & Redocly_
+_With tsoa & Redocly_
 
 1. **Generate OpenAPI spec:**
 
@@ -59,11 +101,11 @@ _With TSOA & Redocly_
 
 ## Development progress
 
-To track the development progress of this project, upcoming features, and bug fixes, check out the [GitHub Project Board](https://github.com/users/0xLott/projects/1).
+To track the development progress of this project and upcoming feature,s check out this [project's board](https://github.com/users/0xLott/projects/1) on GitHub.
 
 ## Acknowledgments
 
-- Data provided by [The Movie Database (TMDB)](https://www.themoviedb.org/).
+Data provided by [The Movie Database (TMDB)](https://www.themoviedb.org/).
 
 ## License
 
