@@ -39,8 +39,7 @@ export class TVSeriesController {
   public async isMiniseries(@Path() seriesId: number): Promise<Response> {
     try {
       const series = await service.getTVSeriesById(seriesId);
-      const isMiniseries = service.isMiniseries(series);
-      return new Response(JSON.stringify({ isMiniseries }), {
+      return new Response(JSON.stringify(series.isMiniseries), {
         headers: { "Content-Type": "application/json" },
       });
     } catch (error) {
