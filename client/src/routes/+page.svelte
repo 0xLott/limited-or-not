@@ -1,2 +1,24 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import TrendingCard from '$lib/components/TrendingCard.svelte';
+    import Footer from '$lib/components/Footer.svelte';
+</script>
+
+<div>
+    <div class="title">
+        <h1>Limited or Not?</h1>
+        <span>Is this show a miniseries?</span>
+    </div>
+
+    <div class="search">
+        <input type="text" id="search-input">
+        <button id="submit-search-btn">🔎</button>
+    </div>
+
+    <div class="trending">
+        <h2>🚧 Trending miniseries 🚧</h2>
+        <TrendingCard />
+        <TrendingCard />
+    </div>
+
+    <Footer />
+</div>
