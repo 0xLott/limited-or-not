@@ -7,7 +7,8 @@ interface TVSeries {
     type: string,
     isMiniseries: boolean,
     status: string,
-    poster_path: string
+    numberOfSeasons: number,
+    posterPath: string
 }
   
 export async function load({ params }) {

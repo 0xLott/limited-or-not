@@ -7,7 +7,7 @@
     <a href="/">Back</a>
 
     <div class="series-info">
-        <img src={data.series.poster_path} alt="Poster">
+        <img src={data.series.posterPath} alt="Poster">
         <h1>{data.series.title}</h1>
 
         {#if data.series.isMiniseries}
@@ -18,7 +18,7 @@
         
         <span>id: {data.series.id}</span>
         <span>Status: {data.series.status}</span>
-        <span>Number of seasons:</span>
+        <span>Number of seasons: {data.series.numberOfSeasons}</span>
     </div>
 
     <div class="series-overview">
