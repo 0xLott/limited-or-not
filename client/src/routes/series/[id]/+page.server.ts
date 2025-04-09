@@ -1,11 +1,12 @@
 import { error } from '@sveltejs/kit';
 
 interface TVSeries {
-    id: number
-    title: string
-    type: string
-    isMiniseries: boolean
-    status: string
+    id: number,
+    title: string,
+    overview: string,
+    type: string,
+    isMiniseries: boolean,
+    status: string,
     poster_path: string
 }
   

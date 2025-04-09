@@ -23,7 +23,7 @@
 
     <div class="series-overview">
         <h2>Overview</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro vitae numquam ad tempore voluptatum asperiores, obcaecati voluptatem nemo illum eligendi minus sed omnis dignissimos dicta eius est facilis perspiciatis temporibus! </p>
+        <p>{data.series.overview}</p>
     </div>
 
     <Footer />
