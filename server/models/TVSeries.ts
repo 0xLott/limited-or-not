@@ -19,14 +19,16 @@ export enum Type {
 export class TVSeries {
   public id!: number;
   public title!: string;
+  public overview!: string;
   public type!: Type;
   public isMiniseries!: boolean;
   public status!: Status;
   public poster_path?: string;
-  
-  constructor(id: number, title: string, type: Type, status: Status, poster_path?: string) {
+
+  constructor(id: number, title: string, overview: string, type: Type, status: Status, poster_path?: string) {
     this.id = id;
     this.title = title;
+    this.overview = overview;
     this.type = type;
     this.isMiniseries = this.type === Type.Miniseries ? true : false;
     this.status = status;
