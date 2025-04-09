@@ -1,5 +1,6 @@
-import { TVSeries, Status, Type } from "../models/TVSeries";
+import { TVSeries, Type } from "../models/TVSeries";
 import { fetchData } from "../utils/fetchData";
+import { createNewTvSeriesEntity } from "../utils/createNewTvSeriesEntity"
 import { APIError, ObjectNotFoundError, InvalidParameterError } from "../utils/errors";
 import { TMDB_API } from "../config";
 
@@ -13,7 +14,7 @@ export class TVSeriesService {
 
     try {
       const data = await fetchData(url);
-      return TVSeriesService.newTvSeriesEntity(data);
+      return createNewTvSeriesEntity(data);
     } catch (error: any) {
       if (error instanceof ObjectNotFoundError) {
         console.error(`TV Show with id ${seriesId} not found.`, error);
@@ -37,7 +38,7 @@ export class TVSeriesService {
 
     try {
       const data = await fetchData(url);
-      return data.results.map((tvSeries: any) => TVSeriesService.newTvSeriesEntity(tvSeries));
+      return data.results.map((tvSeries: any) => createNewTvSeriesEntity(tvSeries));
     } catch (error: any) {
       if (error instanceof ObjectNotFoundError) {
         console.error(`TV Show with title ${seriesTitle} not found.`, error);
@@ -56,7 +57,4 @@ export class TVSeriesService {
     return series.type === Type.Miniseries;
   }
 
-  public static newTvSeriesEntity(data: any): TVSeries {
-    return new TVSeries(data.id, data.name, data.overview, data.type as Type, data.status as Status, data.number_of_seasons as number, data.poster_path);
-  }
 }
