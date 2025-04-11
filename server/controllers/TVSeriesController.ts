@@ -1,6 +1,7 @@
 import { TVSeriesService } from "../services/TVSeriesService";
 import { APIError, InvalidParameterError, ObjectNotFoundError } from "../utils/errors";
 import { Get, Path, Route, Response as ApiResponse } from "tsoa";
+
 const service = new TVSeriesService();
 
 @Route("series")
