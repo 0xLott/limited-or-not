@@ -6,5 +6,6 @@ export default interface TVSeries {
     isMiniseries: boolean,
     status: string,
     numberOfSeasons: number,
+    firstAirDate: string,
     posterPath: string
 }
