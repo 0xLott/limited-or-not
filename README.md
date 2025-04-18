@@ -10,6 +10,7 @@ Check if any TV Show is a miniseries.
 
 - [Bun](https://bun.sh/) (v1.2.5 or higher)
 - [Node.js](https://nodejs.org/) (v18 or higher)
+- [Svelte](https://svelte.dev/docs/svelte/getting-started) (v5.27.0 or higher)
 - TMDB API Key (register at [The Movie Database](https://www.themoviedb.org/settings/api))
 
 ### Setting up environment variables
