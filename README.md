@@ -2,6 +2,8 @@
 
 Check if any TV Show is a miniseries.
 
+> A miniseries is a television show that tells a story in a predetermined, limited number of episodes.
+
 ## Getting started
 
 ### Prerequisites
@@ -12,13 +14,13 @@ Check if any TV Show is a miniseries.
 
 ### Setting up environment variables
 
-Create an `.env` file to the `/server` directory with the following key:
+Create an `.env` file to the `/server` directory with the following entry:
 
-```
-TMDB_API_KEY=<your-api-key>
-```
+`TMDB_API_KEY=<your-api-key>`
 
 Replace `<your-api-key>` with your actual TMDB API key and ensure you save the file.
+
+Bun will take care of sourcing and loading the environment variables.
 
 ### Dependency management  
 
@@ -72,23 +74,16 @@ bun test
 
 ### Managing OpenAPI documentation
 
-_With tsoa & Redocly_
-
-1. **Generate OpenAPI spec:**
+To update the server docs with _tsoa_ & _Redocly_, refer to the following commands:
 
    ```sh
-   npx tsoa spec
-   ```
+   # Generate updated OpenAPI spec
+   npx tsoa spec 
 
-2. **Preview API docs:**
-
-   ```sh
+   # Preview API docs (optional)
    npx redocly preview-docs build/swagger.json
-   ```
 
-3. **Build HTML docs:**
-
-   ```sh
+   # Build updated HTML docs
    npx redocly build-docs build/swagger.json --output ../docs/api-docs.html
    ```
 
