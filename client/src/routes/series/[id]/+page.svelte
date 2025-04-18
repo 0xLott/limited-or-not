@@ -1,30 +1,30 @@
 <script lang="ts">
-    import Footer from '$lib/components/Footer.svelte';
-    let { data } = $props();
+  import Footer from "$lib/components/Footer.svelte";
+  let { data } = $props();
 </script>
 
 <div>
-    <a href="/">Back</a>
+  <a href="/">Back</a>
 
-    <div class="series-info">
-        <img src={data.series.posterPath} alt="Poster">
-        <h1>{data.series.title}</h1>
+  <div class="series-info">
+    <img src={data.series.posterPath} alt="Poster" />
+    <h1>{data.series.title}</h1>
 
-        {#if data.series.isMiniseries}
-            <p>✅ is a miniseries</p>
-        {:else}
-            <p>❌ is not a miniseries</p>
-        {/if}
-        
-        <span>id: {data.series.id}</span>
-        <span>Status: {data.series.status}</span>
-        <span>Number of seasons: {data.series.numberOfSeasons}</span>
-    </div>
+    {#if data.series.isMiniseries}
+      <p>✅ is a miniseries</p>
+    {:else}
+      <p>❌ is not a miniseries</p>
+    {/if}
 
-    <div class="series-overview">
-        <h2>Overview</h2>
-        <p>{data.series.overview}</p>
-    </div>
+    <p>id: <span>{data.series.id}</span></p>
+    <p>Status: <span>{data.series.status}</span></p>
+    <p>Number of seasons: <span>{data.series.numberOfSeasons}</span></p>
+  </div>
 
-    <Footer />
+  <div class="series-overview">
+    <h2>Overview</h2>
+    <p>{data.series.overview}</p>
+  </div>
+
+  <Footer />
 </div>
