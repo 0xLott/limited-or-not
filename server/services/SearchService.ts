@@ -1,6 +1,7 @@
 import { TVSeries } from "../models/TVSeries";
 import { TMDB_API } from "../config";
 import { createNewTvSeriesEntity } from "../utils/createNewTvSeriesEntity"
+import { stringify } from "querystring";
 
 export class SearchService {
 

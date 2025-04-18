@@ -24,9 +24,10 @@ export class TVSeries {
   public isMiniseries!: boolean;
   public status!: Status;
   public numberOfSeasons!: number;
+  public firstAirDate!: string;
   public posterPath?: string;
 
-  constructor(id: number, title: string, overview: string, type: Type, status: Status, numberOfSeasons: number, posterPath?: string) {
+  constructor(id: number, title: string, overview: string, type: Type, status: Status, numberOfSeasons: number, firstAirDate: string, posterPath?: string) {
     this.id = id;
     this.title = title;
     this.overview = overview;
@@ -34,6 +35,7 @@ export class TVSeries {
     this.isMiniseries = this.type === Type.Miniseries ? true : false;
     this.status = status;
     this.numberOfSeasons = numberOfSeasons;
+    this.firstAirDate = firstAirDate;
     this.posterPath =
       posterPath === null
         ? "https://picsum.photos/200/300"
