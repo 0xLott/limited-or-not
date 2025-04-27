@@ -4,7 +4,7 @@ import { TVSeries, Type, Status } from "../../models/TVSeries";
 
 var service: TVSeriesService;
 
-describe("Classifying tv series type [API objects]", () => {
+describe("Classifying tv series type [API-sourced objects]", () => {
   beforeAll(() => {
     service = new TVSeriesService();
   });
@@ -20,30 +20,30 @@ describe("Classifying tv series type [API objects]", () => {
   });
 })
 
-describe("Classifying tv series type [Local models]", () => {
+describe("Classifying tv series type [Local TVSeries objects]", () => {
   test("Should return true when series type is Miniseries", () => {
-    const series = new TVSeries(1, "Test Series", Type.Miniseries, Status.Ended);
+    const series = new TVSeries(1, "Miniseries", "Overview", Type.Miniseries, Status.InProduction, 1, "2021-10-30");
     expect(service.isMiniseries(series)).toBeTrue();
   });
 
   test("Should return false when series type is Talk Show", () => {
-    const series = new TVSeries(3, "Test Series", Type.Talk, Status.Ended);
+    const series = new TVSeries(4, "Talk Show", "Overview", Type.Talk, Status.Ended, 4, "2021-10-30");
     expect(service.isMiniseries(series)).toBeFalse();
   });
 
   test("Should return false when series type is Reality", () => {
-    const series = new TVSeries(4, "Test Series", Type.Reality, Status.Ended);
+    const series = new TVSeries(5, "Reality", "Overview", Type.Reality, Status.InProduction, 3, "2021-10-30");
     expect(service.isMiniseries(series)).toBeFalse();
   });
 
   test("Should return false when series type is News", () => {
-    const series = new TVSeries(5, "Test Series", Type.News, Status.Ended);
+    const series = new TVSeries(9, "News", "Overview", Type.News, Status.Canceled, 1, "2021-10-30");
     expect(service.isMiniseries(series)).toBeFalse();
   });
 
   test("Should return false when series type is Documentary", () => {
-    const series = new TVSeries(6, "Test Series", Type.Documentary, Status.Ended);
+    const series = new TVSeries(14, "Documentary", "Overview", Type.Documentary, Status.InProduction, 3, "2021-10-30");
     expect(service.isMiniseries(series)).toBeFalse();
   });
 })
-;
+  ;
