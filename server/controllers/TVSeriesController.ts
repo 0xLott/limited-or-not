@@ -1,6 +1,7 @@
 import { TVSeriesService } from "../services/TVSeriesService";
 import { APIError, InvalidParameterError, ObjectNotFoundError } from "../utils/errors";
 import { Get, Path, Route, Response as ApiResponse } from "tsoa";
+import { handleErrorResponse } from "../utils/handleErrors";
 
 const service = new TVSeriesService();
 
@@ -17,7 +18,7 @@ export class TVSeriesController {
         headers: { "Content-Type": "application/json" },
       });
     } catch (error) {
-      return this.handleErrorResponse(error);
+      return handleErrorResponse(error);
     }
   }
 
@@ -31,31 +32,7 @@ export class TVSeriesController {
         headers: { "Content-Type": "application/json" },
       });
     } catch (error) {
-      return this.handleErrorResponse(error);
+      return handleErrorResponse(error);
     }
   }
-
-  handleErrorResponse = (error: any) => {
-    let status;
-    let message;
-
-    if (error instanceof InvalidParameterError) {
-      status = 400;
-      message = error.message;
-    } else if (error instanceof ObjectNotFoundError) {
-      status = 404;
-      message = error.message;
-    } else if (error instanceof APIError) {
-      status = 502;
-      message = error.message;
-    } else {
-      status = 500;
-      message = "Internal Server Error";
-    }
-
-    return new Response(JSON.stringify({ error: message }), {
-      status,
-      headers: { "Content-Type": "application/json" },
-    });
-  };
 }

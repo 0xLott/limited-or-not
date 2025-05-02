@@ -1,11 +1,15 @@
 import { Get, Path, Route, Response as ApiResponse } from "tsoa";
 import { SearchService } from "../services/SearchService";
+import { handleErrorResponse } from "../utils/handleErrors";
 
 const service = new SearchService;
 
 @Route("search")
 export class SearchController {
+
     @Get("{query}")
+    @ApiResponse<Error>(400, "Bad Request")
+    @ApiResponse<Error>(404, "Not Found")
     public async getSearchResults(@Path() query: string): Promise<Response> {
         try {
             const searchResults = await service.getSearchResults(query)
@@ -13,11 +17,7 @@ export class SearchController {
                 headers: { "Content-Type": "application/json" },
             });
         } catch (error) {
-            return new Response(JSON.stringify({ error: "Search failed" }), {
-                headers: { "Content-Type": "application/json" },
-            });
+            return handleErrorResponse(error);
         }
     }
 }
-
-// TODO: Improve "Search failed" message once there are exceptions in SearchService
