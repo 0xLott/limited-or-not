@@ -5,9 +5,6 @@ import { APIError, InvalidParameterError, ObjectNotFoundError } from "../utils/e
 import { fetchData } from "../utils/fetchData";
 
 export class TVSeriesService {
-  getSearchResults(arg0: string) {
-    throw new Error("Method not implemented.");
-  }
 
   public async getTVSeriesById(seriesId: number): Promise<TVSeries> {
     if (typeof seriesId !== "number" || isNaN(seriesId) || seriesId < -2147483648 || seriesId > 2147483647) {

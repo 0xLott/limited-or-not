@@ -1,32 +1,41 @@
 import { TMDB_API } from "../config";
 import { TVSeries } from "../models/TVSeries";
 import { createNewTvSeriesEntity } from "../utils/createNewTvSeriesEntity";
+import { APIError, InvalidParameterError, ObjectNotFoundError } from "../utils/errors";
+import { fetchData } from "../utils/fetchData";
 
 export class SearchService {
 
     public async getSearchResults(query: string): Promise<TVSeries[]> {
+        if (typeof query !== "string" || query.length < 2 || query.trim() == "" || !query) {
+            throw new InvalidParameterError("`query` must be a string with 2+ characters");
+        }
+
         const url = `${TMDB_API.BASE_URL}/search/tv?query=${query}&include_adult=false&language=en-US`
 
         const searchResults: TVSeries[] = []
 
-        const response = await fetch(url, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${Bun.env.TMDB_API_KEY}`,
+        try {
+            const data = await fetchData(url);
+            data.results.forEach((tvSeries: any) => {
+                searchResults.push(createNewTvSeriesEntity(tvSeries));
+            });
+
+            return searchResults;
+        } catch (error: any) {
+            if (error instanceof ObjectNotFoundError) {
+                console.error(`TV Show with title ${query} not found.`, error);
+                throw error;
+            } else if (error instanceof APIError) {
+                console.error(`Error from TMDB API: ${error.message}`, error);
+                throw error;
+            } else {
+                console.error(`Unexpected error: ${error.message}`, error);
+                throw error;
             }
-        });
-
-        const data = await response.json();
-        data.results.forEach((tvSeries: any) => {
-            searchResults.push(createNewTvSeriesEntity(tvSeries));
-        });
-
-        return searchResults;
+        }
     }
 }
-
-// TODO: need to address search failing scenario to assign to promise
 
 /** TODO:
  * Pagination needed!

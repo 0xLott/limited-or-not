@@ -52,7 +52,7 @@ describe("Fetching tv series unit tests", () => {
       await service.getTVSeriesById(30000000);
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 404);
-      expect(error.message).toBe("TV Show not found. (HTTP 404)");
+      expect(error.message).toBe("TV Show not found");
     }
   });
 });

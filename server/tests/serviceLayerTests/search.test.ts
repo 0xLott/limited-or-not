@@ -26,7 +26,7 @@ describe("Searching for tv series unit tests", () => {
       await service.getSearchResults(999 as any);
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
-      expect(error.message).toBe("`seriesTitle` must be a non-empty string");
+      expect(error.message).toBe("`query` must be a string with 2+ characters");
     }
   });
 
@@ -44,7 +44,7 @@ describe("Searching for tv series unit tests", () => {
       await service.getSearchResults("");
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
-      expect(error.message).toBe("`seriesTitle` must be a non-empty string");
+      expect(error.message).toBe("`query` must be a string with 2+ characters");
     }
   });
 
