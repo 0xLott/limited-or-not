@@ -1,10 +1,8 @@
-import { TVSeries } from "../models/TVSeries";
 import { TMDB_API } from "../config";
-import { createNewTvSeriesEntity } from "../utils/createNewTvSeriesEntity"
-import { stringify } from "querystring";
+import { TVSeries } from "../models/TVSeries";
+import { createNewTvSeriesEntity } from "../utils/createNewTvSeriesEntity";
 
 export class SearchService {
-
 
     public async getSearchResults(query: string): Promise<TVSeries[]> {
         const url = `${TMDB_API.BASE_URL}/search/tv?query=${query}&include_adult=false&language=en-US`

@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, test } from "bun:test";
-import { TVSeriesService } from "../../services/TVSeriesService";
 import { TVSeries } from "../../models/TVSeries";
+import { TVSeriesService } from "../../services/TVSeriesService";
 import { InvalidParameterError, ObjectNotFoundError } from "../../utils/errors";
 
 var service: TVSeriesService;

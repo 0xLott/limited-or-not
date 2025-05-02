@@ -6,6 +6,7 @@ const service = new TVSeriesService();
 
 @Route("series")
 export class TVSeriesController {
+
   @Get("{seriesId}")
   @ApiResponse<Error>(400, "Bad Request")
   @ApiResponse<Error>(404, "Not Found")

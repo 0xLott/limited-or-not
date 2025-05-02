@@ -1,10 +1,11 @@
-import { TVSeries, Type } from "../models/TVSeries";
-import { fetchData } from "../utils/fetchData";
-import { createNewTvSeriesEntity } from "../utils/createNewTvSeriesEntity"
-import { APIError, ObjectNotFoundError, InvalidParameterError } from "../utils/errors";
 import { TMDB_API } from "../config";
+import { TVSeries, Type } from "../models/TVSeries";
+import { createNewTvSeriesEntity } from "../utils/createNewTvSeriesEntity";
+import { APIError, InvalidParameterError, ObjectNotFoundError } from "../utils/errors";
+import { fetchData } from "../utils/fetchData";
 
 export class TVSeriesService {
+
   public async getTVSeriesById(seriesId: number): Promise<TVSeries> {
     if (typeof seriesId !== "number" || isNaN(seriesId) || seriesId < -2147483648 || seriesId > 2147483647) {
       throw new InvalidParameterError("`seriesId` must be a valid int32");
@@ -56,5 +57,4 @@ export class TVSeriesService {
   public isMiniseries(series: TVSeries): Boolean {
     return series.type === Type.Miniseries;
   }
-
 }
