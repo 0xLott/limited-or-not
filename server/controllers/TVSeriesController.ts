@@ -21,20 +21,6 @@ export class TVSeriesController {
     }
   }
 
-  @Get("search/{title}")
-  @ApiResponse<Error>(400, "Bad Request")
-  @ApiResponse<Error>(404, "Not Found")
-  public async searchTVSeriesByTitle(@Path() title: string): Promise<Response> {
-    try {
-      const series = await service.searchTVSeriesByTitle(title);
-      return new Response(JSON.stringify(series), {
-        headers: { "Content-Type": "application/json" },
-      });
-    } catch (error) {
-      return this.handleErrorResponse(error);
-    }
-  }
-
   @Get("{seriesId}/is-miniseries")
   @ApiResponse<Error>(400, "Bad Request")
   @ApiResponse<Error>(404, "Not Found")

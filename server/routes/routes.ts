@@ -21,11 +21,6 @@ export const routes: Record<string, (req: BunRequest) => Response | Promise<Resp
     return await tvSeriesController.isMiniseries(seriesId);
   },
 
-  "/series/search/:title": async (req) => {
-    const { title } = req.params as { title: string };
-    return await tvSeriesController.searchTVSeriesByTitle(title);
-  },
-
   "/search/:query": async (req) => {
     const { query } = req.params as { query: string };
     return await searchController.getSearchResults(query);

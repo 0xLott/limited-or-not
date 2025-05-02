@@ -56,3 +56,10 @@ describe("Fetching tv series unit tests", () => {
     }
   });
 });
+
+describe("Verifying default image in case of no poster", () => {
+  test("Fetch TV series with null `poster_path`", async () => {
+    const seriesWithNullPoster: TVSeries = await service.getTVSeriesById(221284);
+    expect(seriesWithNullPoster.posterPath).toBe("https://picsum.photos/200/300");
+  });
+});

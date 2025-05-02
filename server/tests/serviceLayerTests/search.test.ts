@@ -1,17 +1,17 @@
 import { beforeAll, describe, expect, test } from "bun:test";
 import { TVSeries } from "../../models/TVSeries";
-import { TVSeriesService } from "../../services/TVSeriesService";
+import { SearchService } from "../../services/SearchService";
 import { InvalidParameterError } from "../../utils/errors";
 
-var service: TVSeriesService;
+var service: SearchService;
 
 describe("Searching for tv series unit tests", () => {
   beforeAll(() => {
-    service = new TVSeriesService();
+    service = new SearchService();
   });
 
   test("Search for existing TV Series", async () => {
-    const searchResults = await service.searchTVSeriesByTitle("merlin");
+    const searchResults = await service.getSearchResults("merlin");
     expect(searchResults).not.toBeNull();
     expect(searchResults.length).toBeGreaterThan(0);
     expect(searchResults[0].title).toBe("Merlin");
@@ -19,11 +19,11 @@ describe("Searching for tv series unit tests", () => {
 
   test("Search TV series with invalid input type", async () => {
     expect(async () => {
-      await service.searchTVSeriesByTitle(999 as any);
+      await service.getSearchResults(999 as any);
     }).toThrow(InvalidParameterError);
 
     try {
-      await service.searchTVSeriesByTitle(999 as any);
+      await service.getSearchResults(999 as any);
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
       expect(error.message).toBe("`seriesTitle` must be a non-empty string");
@@ -31,17 +31,17 @@ describe("Searching for tv series unit tests", () => {
   });
 
   test("Search for non-existent TV Series", async () => {
-    const searchResults = await service.searchTVSeriesByTitle("nonexistentseries");
+    const searchResults = await service.getSearchResults("nonexistentseries");
     expect(searchResults).toEqual([]);
   });
 
   test("Search TV series with empty title", async () => {
     expect(async () => {
-      await service.searchTVSeriesByTitle("");
+      await service.getSearchResults("");
     }).toThrow(InvalidParameterError);
 
     try {
-      await service.searchTVSeriesByTitle("");
+      await service.getSearchResults("");
     } catch (error: any) {
       expect(error).toHaveProperty("statusCode", 400);
       expect(error.message).toBe("`seriesTitle` must be a non-empty string");
@@ -49,16 +49,9 @@ describe("Searching for tv series unit tests", () => {
   });
 
   test("Search TV series by title case sensitivity", async () => {
-    const searchResults = await service.searchTVSeriesByTitle("MERLIN");
+    const searchResults = await service.getSearchResults("MERLIN");
     expect(searchResults).not.toBeNull();
     expect(searchResults.length).toBeGreaterThan(0);
     expect(searchResults[0].title).toBe("Merlin");
-  });
-});
-
-describe("Verifying default image in case of no poster", () => {
-  test("Fetch TV series with null `poster_path`", async () => {
-    const seriesWithNullPoster: TVSeries = await service.getTVSeriesById(221284);
-    expect(seriesWithNullPoster.posterPath).toBe("https://picsum.photos/200/300");
   });
 });
