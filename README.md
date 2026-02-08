@@ -15,26 +15,36 @@ Check if any TV Show is a miniseries.
 
 ### Setting up environment variables
 
-Create an `.env` file to the `/server` directory with the following entry:
+#### 1. Server variables
+Create a `.env` file to the `/server` directory with the following entry:
 
-`TMDB_API_KEY=<your-api-key>`
+```
+TMDB_API_KEY=<your-api-key>
+```
 
 Replace `<your-api-key>` with your actual TMDB API key and ensure you save the file.
 
 Bun will take care of sourcing and loading the environment variables.
+
+#### 2. Client variables
+Create a `.env` file to the `/client` directory with the following entry:
+
+```
+SERVER_URL=http://localhost:3000
+```
+
+Svelte-kit will take care of sourcing and loading the environment variables.
 
 ### Dependency management  
 
 This app uses Bun to manage dependencies for both the back end (`/server`) and front end (`/client`). From the root directory, install dependencies with:  
 
 ```sh
-# Install dependencies for the back end  
-cd server  
-bun install  
+# For the back end  
+cd server && bun install  
 
-# Install dependencies for the front end  
-cd client  
-bun install  
+# For the front end  
+cd client && bun install  
 ```
 
 Run the following to add, remove, or upgrade packages:  
@@ -49,21 +59,15 @@ Bun automatically generates a `bun.lock` file for deterministic installs. Ensure
 
 Start the back end and front end development servers using:  
 
-#### Back End (`/server`)  
-
 ```sh
-cd server  
-bun .
+# For the Back End
+cd server && bun .
+
+# For the front End
+cd client && bun run dev --open  
 ```  
 
-#### Front End (`/client`)  
-
-```sh
-cd client  
-bun run dev --open  
-```  
-
-Ensure both servers are running for full functionality.
+Run each command in a **separate terminal window**. Ensure both servers are running for full functionality.
 
 ### Running tests
 
