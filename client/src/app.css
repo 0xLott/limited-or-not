@@ -10,8 +10,9 @@
   /* Type Scale */
   --text-h1: 2rem;
   --text-h1--font-weight: 600;
-
-  --text-body: 1.25rem;
+  --text-h2: 1.5rem;
+  --text-h2--font-weight: 600;
+  --text-body: 1.5rem;
   --text-body--font-weight: 400;
 
   /* Colours */
@@ -45,14 +46,15 @@
   body {
     @apply bg-bg-primary; 
     min-height: 100vh;
+    padding: 5rem;
   }
 
   h1 {
-    @apply text-h1 font-mono text-accent-primary
+    @apply text-h1 font-mono text-accent-primary;
   }
 
   h2 {
-
+    @apply text-h2 font-mono text-text-secondary;
   }
 
   p {
