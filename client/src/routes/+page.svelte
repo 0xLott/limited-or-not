@@ -8,20 +8,20 @@
 
 <div>
   <div class="title">
-    <h1>Limited or Not?</h1>
-    <span>Is this show a miniseries?</span>
+    <h1 class="text-8xl">Limited or Not?</h1>
+    <h1 class="font-light">Is this show a miniseries?</h1>
   </div>
 
   <div class="search">
-    <input type="text" id="search-input" bind:value={searchQuery} />
+    <input type="text" id="search-input" placeholder="Search for a TV Show" bind:value={searchQuery}/>
     <button id="submit-search-btn" on:click={() => goto(`/search/${encodeURIComponent(searchQuery)}`)}>🔎</button>
   </div>
 
-  <div class="trending">
+  <!-- <div class="trending">
     <h2>🚧 Trending miniseries 🚧</h2>
     <TrendingCard />
     <TrendingCard />
-  </div>
+  </div> -->
 
   <Footer />
 </div>

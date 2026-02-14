@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+
+  /* Typography */
+  --font-sans: "Lato", ui-sans-serif, system-ui;
+  --font-mono: "Chivo Mono", ui-monospace, monospace;
+
+  /* Type Scale */
+  --text-h1: 2rem;
+  --text-h1--font-weight: 600;
+  --text-h2: 1.5rem;
+  --text-h2--font-weight: 600;
+  --text-body: 1.5rem;
+  --text-body--font-weight: 400;
+
+  /* Colours */
+  --color-*: initial;
+  --color-white: #E6ECEF;
+  
+  /* Backgrounds */
+  --color-bg-primary: #1E343F;
+  --color-bg-surface: #253F4C;
+  --color-bg-surface-elevated: #2C4A59;
+  
+  /* Text */
+  --color-text-primary: #E6ECEF;
+  --color-text-secondary: #B8BFC1;
+  --color-text-inverse: #2C4C5C;
+  
+  /* Accent */
+  --color-accent-primary: #F3E308;
+  --color-accent-hover: #FFF04A;
+  --color-accent-pressed: #D4C700;
+  
+  /* Border */
+  --color-border-strong: #6C8494;
+  
+  /* Feedback */
+  --color-error: #F2C1C1;
+  --color-success: #CDEBDD;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-primary; 
+    min-height: 100vh;
+    padding: 5rem;
+  }
+
+  h1 {
+    @apply text-h1 font-mono text-accent-primary;
+  }
+
+  h2 {
+    @apply text-h2 font-mono text-text-secondary;
+  }
+
+  p {
+    @apply text-body text-text-primary;
+  }
+}

@@ -7,7 +7,10 @@
 <div id="search-results-page">
   <a id="back-link" href="/">Back</a>
 
-  <h1 id="search-results-title">Search results for "{data.query}"</h1>
+  <div class="flex gap-2.5">
+    <h1 id="search-results-title" class="font-light">Showing results for</h1>
+    <h1 id="search-results-title">"{data.query}"</h1>
+  </div>
 
   <div id="search-results-list">
     {#each data.searchResults as result}
