@@ -1,47 +1,45 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import banner from "$lib/assets/Banner.svg";
+
   let searchQuery = "";
 </script>
 
-<div class="min-h-[calc(100vh-10rem)] flex items-center justify-center">
-  <div class="w-full max-w-4xl px-6 text-center flex flex-col gap-3">
-    
-    <header class="flex flex-col gap-2">
-      <h1 class="text-6xl md:text-8xl tracking-tight">
-        Limited or Not?
-      </h1>
-      <h1 class="font-light">
-        Is this show a miniseries?
-      </h1>
+<section>
+  <div class="flex flex-col items-center">
+    <header>
+      <h1 class="text-8xl">Limited or Not?</h1>
     </header>
+  </div>
+
+  <div class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+    <img src={banner} class="w-full object-cover" alt="Banner" />
+  </div>
+
+  <div class="flex flex-col items-center justify-center">
+    <h1 class="font-light">Is this show a miniseries?</h1>
 
     <form
-      class="relative w-full"
-      on:submit={(e) => {
-        e.preventDefault();
-        goto(`/search/${encodeURIComponent(searchQuery)}`);
-      }}    
+      on:submit|preventDefault={() =>
+        goto(`/search/${encodeURIComponent(searchQuery)}`)}
+      class="flex flex-col items-center justify-center"
     >
-      <label for="search-input" class="sr-only">
-        Search for a TV show
-      </label>
+      <div class="relative w-full">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search for a TV show"
+          bind:value={searchQuery}
+          class="pr-12"
+        />
 
-      <input
-        id="search-input"
-        type="text"
-        placeholder="Search for a TV show"
-        bind:value={searchQuery}
-        class="w-full h-14 px-3 pr-14 border bg-transparent focus:outline-none"
-      />
-
-      <button
-        type="submit"
-        class="absolute right-3 top-1/2 -translate-y-1/2"
-      >
-        🔎
-      </button>
+        <button
+          type="submit"
+          class="text-accent-primary absolute right-3.5 top-1/2 -translate-y-1/2"
+        >
+          🔎︎
+        </button>
+      </div>
     </form>
-
   </div>
-</div>
-
+</section>
