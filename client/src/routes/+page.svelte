@@ -6,18 +6,22 @@
 </script>
 
 <section>
-  <div class="flex flex-col items-center">
+  <!-- -mb: pulls the element below upward, causing overlap with the banner -->
+  <!-- Responsiveness allow the overlap distance to scales proportionally with the banner size -->
+  <div class="flex flex-col items-center z-1 -mb-4 :sm-mb-8 md:-mb-16 lg:-mb-16 xl:-mb-24">
     <header>
-      <h1 class="text-8xl">Limited or Not?</h1>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-center text-nowrap">Limited or Not?</h1>
     </header>
   </div>
 
-  <div class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+  <div class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] z-0">
     <img class="w-full object-cover" src={banner} alt="Banner" />
   </div>
 
-  <div class="flex flex-col items-center justify-center">
-    <h1 class="font-light">Is this show a miniseries?</h1>
+  <div
+    class="flex flex-col items-center justify-center gap-4 z-1 -mt-4 :sm-mb-6 md:-mt-12 lt:-mb-16"
+  >
+    <h1 class="font-light text-center">Is this show a miniseries?</h1>
 
     <form
       class="flex flex-col items-center justify-center"
