@@ -43,7 +43,7 @@
 
 @layer base {
   body {
-    @apply bg-bg-primary p-20;
+    @apply bg-bg-primary;
     min-height: 100dvh;
     min-height: 100vh;
   }
