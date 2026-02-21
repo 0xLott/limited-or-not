@@ -11,7 +11,7 @@
   <div>
     <header class="z-0 -mb-4 sm-mb-8 md:-mb-16 lg:-mb-16 xl:-mb-24">
       <h1
-        class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-center text-nowrap"
+        class="text-[2.3rem] sm:text-6xl md:text-7xl lg:text-8xl text-center text-nowrap"
       >
         Limited or Not?
       </h1>
@@ -23,7 +23,7 @@
   </div>
 
   <div
-    class="flex flex-col items-center gap-4 z-0 -mt-4 :sm-mb-6 md:-mt-12 lg:-mb-16"
+    class="flex flex-col items-center gap-4 z-0 -mt-1 :sm-mb-4 md:-mt-10 lg:-mb-12"
   >
     <h1
       class="font-light text-center text-lg sm:text-2xl md:text-3xl lg:text-4xl"
