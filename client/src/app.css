@@ -2,13 +2,12 @@
 @import "tailwindcss";
 
 @theme {
-
   /* Typography */
   --font-sans: "Lato", ui-sans-serif, system-ui;
   --font-mono: "Chivo Mono", ui-monospace, monospace;
 
   /* Type Scale */
-  --text-h1: 2rem;
+  --text-h1: 1.5rem;
   --text-h1--font-weight: 600;
   --text-h2: 1.5rem;
   --text-h2--font-weight: 600;
@@ -44,9 +43,9 @@
 
 @layer base {
   body {
-    @apply bg-bg-primary; 
+    @apply bg-bg-primary;
+    min-height: 100dvh;
     min-height: 100vh;
-    padding: 5rem;
   }
 
   h1 {
@@ -59,5 +58,13 @@
 
   p {
     @apply text-body text-text-primary;
+  }
+
+  input {
+    @apply border h-14 py-3 px-3 border-accent-primary bg-transparent;
+  }
+
+  input::placeholder {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary opacity-50 font-light;
   }
 }
