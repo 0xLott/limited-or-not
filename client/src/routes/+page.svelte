@@ -5,52 +5,55 @@
   let searchQuery = "";
 </script>
 
-<section class="min-h-screen flex flex-col justify-center">
+<section
+  class="h-screen flex flex-col justify-center items-center overflow-hidden"
+>
   <!-- Responsiveness allow the overlap distance to scales proportionally with the banner size -->
   <!-- -mb: pulls the element below upward, causing overlap with the banner -->
   <div>
-    <header class="z-0 -mb-4 sm-mb-8 md:-mb-16 lg:-mb-16 xl:-mb-24">
-      <h1
-        class="text-[2.3rem] sm:text-6xl md:text-7xl lg:text-8xl text-center text-nowrap"
-      >
-        Limited or Not?
-      </h1>
-    </header>
-  </div>
-
-  <div class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] z-1">
-    <img class="w-full object-cover" src={banner} alt="Banner" />
-  </div>
-
-  <div
-    class="flex flex-col items-center gap-4 z-0 -mt-1 :sm-mb-4 md:-mt-10 lg:-mb-12"
-  >
-    <h1
-      class="font-light text-center text-lg sm:text-2xl md:text-3xl lg:text-4xl"
-    >
-      Is this show a miniseries?
-    </h1>
-
-    <form
-      on:submit|preventDefault={() =>
-        goto(`/search/${encodeURIComponent(searchQuery)}`)}
-    >
-      <div class="relative w-full">
-        <input
-          id="search-input"
-          type="text"
-          placeholder="Search for a TV show"
-          bind:value={searchQuery}
-          class="pr-12"
-        />
-
-        <button
-          class="text-accent-primary absolute right-3.5 top-1/2 -translate-y-1/2"
-          type="submit"
+    <div class="flex flex-col items-center w-full max-w-screen-xl">
+      <header class="z-10 -mb-[3%]">
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center px-4"
         >
-          🔎︎
-        </button>
+          Limited or Not?
+        </h1>
+      </header>
+
+      <div class="w-full max-w-full">
+        <img class="w-full h-auto" src={banner} alt="Banner" />
       </div>
-    </form>
+
+      <div class="flex flex-col items-center w-[60%] gap-4 z-10 -mt-[3%] px-4">
+        <h1
+          class="font-light text-center text-xs sm:text-base md:text-2xl lg:text-3xl"
+        >
+          Is this show a miniseries?
+        </h1>
+
+        <form
+          on:submit|preventDefault={() =>
+            goto(`/search/${encodeURIComponent(searchQuery)}`)}
+          class="w-full"
+        >
+          <div class="relative">
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search for a TV show"
+              bind:value={searchQuery}
+              class="pr-12 w-full"
+            />
+
+            <button
+              class="text-accent-primary absolute right-3.5 top-1/2 -translate-y-1/2"
+              type="submit"
+            >
+              🔎︎
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </section>

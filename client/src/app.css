@@ -65,6 +65,6 @@
   }
 
   input::placeholder {
-    @apply text-base text-text-secondary opacity-50 font-light;
+    @apply text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary opacity-50 font-light;
   }
 }
