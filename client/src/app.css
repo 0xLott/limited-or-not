@@ -11,9 +11,13 @@
   --text-h1--font-weight: 600;
   --text-h2: 1.5rem;
   --text-h2--font-weight: 600;
+  --text-h3: 1.125rem;
+  --text-h3--font-weight: 600;
+  --text-year: 1rem;
+  --text-year--font-weight: 400;
   --text-body: 1.5rem;
   --text-body--font-weight: 400;
-
+  
   /* Colours */
   --color-*: initial;
   --color-white: #E6ECEF;
@@ -54,6 +58,14 @@
 
   h2 {
     @apply text-h2 font-mono text-text-secondary;
+  }
+
+  #tv-series-title {
+    @apply text-h3 font-sans text-text-primary
+  }
+
+  #tv-series-year {
+    @apply text-year font-sans text-text-secondary
   }
 
   p {
